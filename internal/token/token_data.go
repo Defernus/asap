@@ -1,6 +1,9 @@
 package token
 
-import "asap/internal/source"
+import (
+	"asap/internal/source"
+	"fmt"
+)
 
 type TokenData struct {
 	value     string
@@ -42,4 +45,32 @@ func NewToken(src *source.Source, offset, size int) *TokenData {
 		col:       col,
 		row:       row,
 	}
+}
+
+func (tokenData *TokenData) GetPath() string {
+	return fmt.Sprintf("%v:%v:%v", tokenData.src.GetSourcePath(), tokenData.col, tokenData.row)
+}
+
+func (tokenData *TokenData) String() string {
+	return fmt.Sprintf("%v (%v size) \"%v\"", tokenData.GetPath(), tokenData.tokenSize, tokenData.value)
+}
+
+func (tokenData *TokenData) GetCol() int {
+	return tokenData.col
+}
+
+func (tokenData *TokenData) GetRow() int {
+	return tokenData.row
+}
+
+func (tokenData *TokenData) GetOffset() int {
+	return tokenData.offset
+}
+
+func (tokenData *TokenData) GetValue() string {
+	return tokenData.value
+}
+
+func (tokenData *TokenData) GetToken() Token {
+	return tokenData.token
 }

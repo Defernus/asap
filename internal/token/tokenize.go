@@ -7,6 +7,11 @@ import (
 
 var tokens = []Token{
 	tokenKeyword,
+	tokenStringLiteral,
+	tokenWhiteSpace,
+	tokenIdentifier,
+	tokenOperator,
+	tokenInteger,
 }
 
 func TokenizeSource(src *source.Source) []*TokenData {

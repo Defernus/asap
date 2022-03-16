@@ -15,6 +15,6 @@ func main() {
 	tokens := token.TokenizeSource(src)
 
 	for _, token := range tokens {
-		fmt.Printf("token: %v\n", token)
+		fmt.Printf("token: %s\n", token)
 	}
 }

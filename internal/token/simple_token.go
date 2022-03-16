@@ -58,3 +58,31 @@ var tokenStringLiteral = &simpleToken{
 	match: *regexp.MustCompile("(\\\\\"|\\\\\\w|[^\\\"\\\\])*"),
 	name:  "string-literal",
 }
+
+var tokenWhiteSpace = &simpleToken{
+	begin: nil,
+	end:   nil,
+	match: *regexp.MustCompile("\\s"),
+	name:  "white-space",
+}
+
+var tokenIdentifier = &simpleToken{
+	begin: nil,
+	end:   nil,
+	match: *regexp.MustCompile("\\b[a-zA-Z_][\\w_]*"),
+	name:  "identifier",
+}
+
+var tokenOperator = &simpleToken{
+	begin: nil,
+	end:   nil,
+	match: *regexp.MustCompile("\\+\\+|\\+|\\-\\-|\\-|\\*|<=|>=|<|>|==|=|!|\\|\\||\\||&&|&|::|:"),
+	name:  "operator",
+}
+
+var tokenInteger = &simpleToken{
+	begin: nil,
+	end:   nil,
+	match: *regexp.MustCompile("(\\+|\\-)?\\d+"),
+	name:  "integer",
+}
