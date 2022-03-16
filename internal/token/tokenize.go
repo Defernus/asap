@@ -5,7 +5,9 @@ import (
 	"errors"
 )
 
-var tokens = []*Token{}
+var tokens = []Token{
+	tokenKeyword,
+}
 
 func TokenizeSource(src *source.Source) []*TokenData {
 	rawSrc := src.GetRawCode()
@@ -16,7 +18,7 @@ func TokenizeSource(src *source.Source) []*TokenData {
 
 		var tokenData *TokenData = nil
 		for _, token := range tokens {
-			tokenSize, tokenValue := (*token).Parse(subString)
+			tokenSize, tokenValue := token.Parse(subString)
 
 			if tokenSize != 0 {
 				col, row := getTokenPos(rawSrc, offset)

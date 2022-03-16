@@ -4,7 +4,7 @@ import "asap/internal/source"
 
 type TokenData struct {
 	value     string
-	token     *Token
+	token     Token
 	src       *source.Source
 	offset    int
 	tokenSize int

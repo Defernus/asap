@@ -8,6 +8,7 @@ type simpleToken struct {
 	begin *regexp.Regexp
 	end   *regexp.Regexp
 	match regexp.Regexp
+	name  string
 }
 
 func (token *simpleToken) Parse(str []byte) (int, string) {
@@ -40,14 +41,20 @@ func (token *simpleToken) Parse(str []byte) (int, string) {
 	return size, string(str[start:end])
 }
 
-var tokenKeyword = simpleToken{
+func (token *simpleToken) GetName() string {
+	return token.name
+}
+
+var tokenKeyword = &simpleToken{
 	begin: nil,
 	end:   nil,
 	match: *regexp.MustCompile("const|var"),
+	name:  "keyword",
 }
 
-var tokenStringLiteral = simpleToken{
+var tokenStringLiteral = &simpleToken{
 	begin: regexp.MustCompile("\""),
 	end:   regexp.MustCompile("\""),
 	match: *regexp.MustCompile("(\\\\\"|\\\\\\w|[^\\\"\\\\])*"),
+	name:  "string-literal",
 }
