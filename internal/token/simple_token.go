@@ -48,8 +48,15 @@ func (token *simpleToken) GetName() string {
 var tokenKeyword = &simpleToken{
 	begin: nil,
 	end:   nil,
-	match: *regexp.MustCompile("const|var"),
+	match: *regexp.MustCompile("\\b(if|else|while|return|var|const|include|typedef)\\b"),
 	name:  "keyword",
+}
+
+var tokenType = &simpleToken{
+	begin: nil,
+	end:   nil,
+	match: *regexp.MustCompile("(\\b|(\\*|\\s)*)(int|char|void|float)\\b"),
+	name:  "type",
 }
 
 var tokenStringLiteral = &simpleToken{
@@ -76,7 +83,7 @@ var tokenIdentifier = &simpleToken{
 var tokenOperator = &simpleToken{
 	begin: nil,
 	end:   nil,
-	match: *regexp.MustCompile("\\+\\+|\\+|\\-\\-|\\-|\\*|<=|>=|<|>|==|=|!|\\|\\||\\||&&|&|::|:"),
+	match: *regexp.MustCompile("\\+\\+|\\+|\\-\\-|\\-|\\*|<=|>=|<|>|==|=|!|\\|\\||\\||&&|&|:"),
 	name:  "operator",
 }
 
@@ -85,4 +92,25 @@ var tokenInteger = &simpleToken{
 	end:   nil,
 	match: *regexp.MustCompile("(\\+|\\-)?\\d+"),
 	name:  "integer",
+}
+
+var tokenSepparator = &simpleToken{
+	begin: nil,
+	end:   nil,
+	match: *regexp.MustCompile(";|,|\\."),
+	name:  "sepparator",
+}
+
+var tokenOpenBracket = &simpleToken{
+	begin: nil,
+	end:   nil,
+	match: *regexp.MustCompile("\\(|\\{|\\["),
+	name:  "open-bracket",
+}
+
+var tokenCloseBracket = &simpleToken{
+	begin: nil,
+	end:   nil,
+	match: *regexp.MustCompile("\\)|\\}|\\]"),
+	name:  "close-bracket",
 }

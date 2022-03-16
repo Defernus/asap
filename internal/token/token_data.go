@@ -53,11 +53,10 @@ func (tokenData *TokenData) GetPath() string {
 
 func (tokenData *TokenData) String() string {
 	return fmt.Sprintf(
-		"%v at %v (%v size) \"%v\"",
+		"%v at %v (%v size)",
 		tokenData.token.GetName(),
 		tokenData.GetPath(),
 		tokenData.tokenSize,
-		tokenData.value,
 	)
 }
 

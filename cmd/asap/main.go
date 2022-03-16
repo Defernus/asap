@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	src, err := source.ReadSource("test.asap")
+	src, err := source.ReadSource("examples/rule101/main.asap")
 	if err != nil {
 		panic(err)
 	}

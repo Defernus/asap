@@ -12,6 +12,9 @@ var tokens = []Token{
 	tokenIdentifier,
 	tokenOperator,
 	tokenInteger,
+	tokenSepparator,
+	tokenOpenBracket,
+	tokenCloseBracket,
 }
 
 func TokenizeSource(src *source.Source) []*TokenData {
