@@ -48,11 +48,17 @@ func NewToken(src *source.Source, offset, size int) *TokenData {
 }
 
 func (tokenData *TokenData) GetPath() string {
-	return fmt.Sprintf("%v:%v:%v", tokenData.src.GetSourcePath(), tokenData.col, tokenData.row)
+	return fmt.Sprintf("%v:%v:%v", tokenData.src.GetSourcePath(), tokenData.col+1, tokenData.row+1)
 }
 
 func (tokenData *TokenData) String() string {
-	return fmt.Sprintf("%v (%v size) \"%v\"", tokenData.GetPath(), tokenData.tokenSize, tokenData.value)
+	return fmt.Sprintf(
+		"%v at %v (%v size) \"%v\"",
+		tokenData.token.GetName(),
+		tokenData.GetPath(),
+		tokenData.tokenSize,
+		tokenData.value,
+	)
 }
 
 func (tokenData *TokenData) GetCol() int {
