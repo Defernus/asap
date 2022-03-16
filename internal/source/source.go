@@ -6,7 +6,7 @@ import (
 )
 
 type Source struct {
-	rawCode  string
+	rawCode  []byte
 	filePath string
 }
 
@@ -23,11 +23,11 @@ func ReadSource(filePath string) (*Source, error) {
 
 	return &Source{
 		filePath: absPath,
-		rawCode:  string(content),
+		rawCode:  content,
 	}, nil
 }
 
-func (source *Source) GetRawCode() string {
+func (source *Source) GetRawCode() []byte {
 	return source.rawCode
 }
 

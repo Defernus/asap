@@ -7,7 +7,7 @@ import (
 )
 
 func (src *Source) ThrowError(col, row int, err error) {
-	lines := strings.Split(src.GetRawCode(), "\n")
+	lines := strings.Split(string(src.GetRawCode()), "\n")
 	line := lines[col]
 	fmt.Printf("at %v:%v:%v error: %v \n%v\n", src.filePath, col, row, err, line)
 	fmt.Printf("%v^\n", strings.Repeat(" ", row))
